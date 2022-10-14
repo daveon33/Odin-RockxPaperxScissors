@@ -13,7 +13,30 @@ function getComputerChoice() {
 }
 
 /* Now, I will define the funtion that actually plays the game, for this the function will take the computer's choice and the player's choice as
-    parameters
+    parameters, then with the toLowerCase I'll ensure that the value that the function is receiving is going to be consistent when I procede with
+    the evaluation, to define the winner I'll basic if/else conditionals having in mind that Paper beats Rock beats Scissors beats Paper.
 */
 
-getComputerChoice();
+function playing(computerChoice, playerChoice) {
+    let computerSelection = computerChoice.toLowerCase();
+    let playerSelection = playerChoice.toLowerCase();
+
+   
+    if (computerSelection == playerSelection) {
+        return "It's a tie! Nobody Wins";
+    } else {
+        if((computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "rock" && playerSelection == "scissors") ||
+            (computerSelection == "scissors" && playerSelection == "paper")) {
+                return "Computer wins!";
+
+        } else if((playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "paper")) {
+            return "Player wins!";
+
+        } 
+    }
+    
+}
+
+let value = getComputerChoice();
+console.log(playing(value, "PAPER"));
