@@ -7,8 +7,10 @@
 */
 
 function getComputerChoice() {
+    
     let computerOptions = ["Rock", "Paper", "Scissors"];
     let computerChoice = Math.floor(Math.random() * computerOptions.length)
+    
     return computerOptions[computerChoice];
 }
 
@@ -18,25 +20,67 @@ function getComputerChoice() {
 */
 
 function playing(computerChoice, playerChoice) {
+
+    // Making the variables computerChoice and playerChoice case insensitive
+    
     let computerSelection = computerChoice.toLowerCase();
     let playerSelection = playerChoice.toLowerCase();
 
-   
     if (computerSelection == playerSelection) {
-        return "It's a tie! Nobody Wins";
+
+        return "Tie";
+
     } else {
         if((computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "rock" && playerSelection == "scissors") ||
             (computerSelection == "scissors" && playerSelection == "paper")) {
-                return "Computer wins!";
+
+                return "Computer";
 
         } else if((playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "paper")) {
-            return "Player wins!";
+
+            return "Player";
 
         } 
     }
     
 }
 
-let value = getComputerChoice();
-console.log(playing(value, "PAPER"));
+/* The final function will help the program to run multiple times the playing function, this way I can create a full game with 5 rounds
+    each time the computer or the player wins, a score variable should be incremented, when one of the score variables reach the 5 value
+    the game ends, and the winner is declared */
+
+function playRound() {
+
+    let computerScore = 0;
+    let playerScore = 0;
+
+    for (let game = 0; game < 5; game++) {
+
+        let computerSelection = getComputerChoice();
+        let playerSelection = prompt("Rock, Paper or Scissors");
+        let winner = playing(computerSelection, playerSelection);
+        
+        switch(winner) {
+
+            case "Tie":
+                console.log("It's a tie!");
+                continue;
+            
+            case "Computer":
+                computerScore += 1;
+                console.log(`Computer wins! ${computerSelection} beats ${playerSelection}`);
+                break;
+            
+            case "Player":
+                playerScore += 1;
+                console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
+                break;
+        }
+    }
+
+    computerScore > playerScore ? console.log("Computer Wins the Game!") : console.log("Player Wins the Game!")
+    
+}
+
+playRound();
