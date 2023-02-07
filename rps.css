@@ -1,0 +1,14 @@
+html, body{
+    min-height:100%;
+}
+
+body, #console {
+    height:100vh;
+}
+
+#console {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -50,37 +50,54 @@ function playing(computerChoice, playerChoice) {
     each time the computer or the player wins, a score variable should be incremented, when one of the score variables reach the 5 value
     the game ends, and the winner is declared */
 
-function playRound() {
+function playRound(playerSelection) {
 
     let computerScore = 0;
     let playerScore = 0;
 
-    for (let game = 0; game < 5; game++) {
+    //for (let game = 0; game < 5; game++) {
 
         let computerSelection = getComputerChoice();
-        let playerSelection = prompt("Rock, Paper or Scissors");
         let winner = playing(computerSelection, playerSelection);
+        let answerDiv = document.getElementById('results');
+        let content;
+        let result;
         
         switch(winner) {
 
             case "Tie":
-                console.log("It's a tie!");
-                continue;
+                content = document.createTextNode("It's a tie!");
+                break;
             
             case "Computer":
                 computerScore += 1;
-                console.log(`Computer wins! ${computerSelection} beats ${playerSelection}`);
+                content = document.createTextNode(`Computer wins! ${computerSelection} beats ${playerSelection}`);
                 break;
             
             case "Player":
                 playerScore += 1;
-                console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
+                content = document.createTextNode(`Player Wins! ${playerSelection} beats ${computerSelection}`);
                 break;
         }
-    }
+    //}
 
-    computerScore > playerScore ? console.log("Computer Wins the Game!") : console.log("Player Wins the Game!")
+
+
+    computerScore > playerScore ? result = document.createTextNode("Computer Wins the Game!"): result = document.createTextNode("Player Wins the Game!");
+
+    answerDiv.appendChild(content);
+    answerDiv.appendChild(document.createTextNode("\n"));
+    answerDiv.appendChild(document.createTextNode(`Player Score: ${playerScore}, Computer Score: ${computerScore}`));
+    
     
 }
 
-playRound();
+const btns = document.querySelectorAll("button");
+btns.forEach(btn => btn.addEventListener('click', (e) => {
+    let flushDiv = document.getElementById('results');
+    flushDiv.textContent = "";
+    playRound(e.target.textContent);
+    
+    
+}));
+
