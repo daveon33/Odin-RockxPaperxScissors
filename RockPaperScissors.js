@@ -5,6 +5,8 @@
     The basic functionality is made by generatin a random value between 0 and 1, and multiplying that value for the length of the array, then
     using the floor method to round down to a whole number, the range will be between 0 and 2, which are the index values of the array.
 */
+let computerScore = 0;
+let playerScore = 0;
 
 function getComputerChoice() {
     
@@ -52,52 +54,50 @@ function playing(computerChoice, playerChoice) {
 
 function playRound(playerSelection) {
 
-    let computerScore = 0;
-    let playerScore = 0;
+    let computerSelection = getComputerChoice();
+    let winner = playing(computerSelection, playerSelection);
+    let answerDiv = document.getElementById('results');
+    let content;
+    let result;
+    
+    switch(winner) {
 
-    //for (let game = 0; game < 5; game++) {
-
-        let computerSelection = getComputerChoice();
-        let winner = playing(computerSelection, playerSelection);
-        let answerDiv = document.getElementById('results');
-        let content;
-        let result;
+        case "Tie":
+            content = document.createTextNode("It's a tie!");
+            break;
         
-        switch(winner) {
+        case "Computer":
+            computerScore += 1;
+            content = document.createTextNode(`Computer wins! ${computerSelection} beats ${playerSelection}`);
+            break;
+        
+        case "Player":
+            playerScore += 1;
+            content = document.createTextNode(`Player Wins! ${playerSelection} beats ${computerSelection}`);
+            break;
+    }
 
-            case "Tie":
-                content = document.createTextNode("It's a tie!");
-                break;
-            
-            case "Computer":
-                computerScore += 1;
-                content = document.createTextNode(`Computer wins! ${computerSelection} beats ${playerSelection}`);
-                break;
-            
-            case "Player":
-                playerScore += 1;
-                content = document.createTextNode(`Player Wins! ${playerSelection} beats ${computerSelection}`);
-                break;
-        }
-    //}
-
-
-
-    computerScore > playerScore ? result = document.createTextNode("Computer Wins the Game!"): result = document.createTextNode("Player Wins the Game!");
+    if(playerScore == 5) {
+        result = document.createTextNode("Player WON");
+        answerDiv.appendChild(result);
+        return;
+    } else if(computerScore == 5) {
+        result = document.createTextNode("Computer WON");
+        answerDiv.appendChild(result);
+        return;
+    }
 
     answerDiv.appendChild(content);
-    answerDiv.appendChild(document.createTextNode("\n"));
     answerDiv.appendChild(document.createTextNode(`Player Score: ${playerScore}, Computer Score: ${computerScore}`));
     
     
 }
+
 
 const btns = document.querySelectorAll("button");
 btns.forEach(btn => btn.addEventListener('click', (e) => {
     let flushDiv = document.getElementById('results');
     flushDiv.textContent = "";
     playRound(e.target.textContent);
-    
-    
 }));
 
