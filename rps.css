@@ -39,6 +39,10 @@ body, #console {
     height: 80px;
 }
 
+.imgBtn:hover {
+    filter: brightness(200%);
+}
+
 #currentMessage {
     font-size: 50px;
 }

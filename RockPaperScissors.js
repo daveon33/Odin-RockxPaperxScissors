@@ -80,10 +80,31 @@ function playRound(playerSelection) {
     if(playerScore == 5) {
         result = document.createTextNode("Player WON");
         answerDiv.appendChild(result);
+        let myBtns = document.querySelectorAll('button');
+        myBtns.forEach(myBtn => myBtn.setAttribute('disabled', ''));
+        answerDiv.appendChild(document.createElement("br"));
+        const finishBtn = document.createElement('button');
+        finishBtn.textContent = "Play Again?";
+        finishBtn.setAttribute('style', 'background-color: transparent; font-size: 25px; color: white; font-family: Caveat; border: none; cursor: pointer');
+        answerDiv.appendChild(finishBtn);
+        finishBtn.onclick = () => {
+            location.reload();
+        }
         return;
+        
     } else if(computerScore == 5) {
         result = document.createTextNode("Computer WON");
         answerDiv.appendChild(result);
+        let myBtns = document.querySelectorAll('button');
+        myBtns.forEach(myBtn => myBtn.setAttribute('disabled', ''));
+        answerDiv.appendChild(document.createElement("br"));
+        const finishBtn = document.createElement('button');
+        finishBtn.textContent = "Play Again?";
+        finishBtn.setAttribute('style', 'background-color: transparent; font-size: 25px; color: white; font-family: Caveat; border: none; cursor: pointer');
+        answerDiv.appendChild(finishBtn);
+        finishBtn.onclick = () => {
+            location.reload();
+        }
         return;
     }
 
