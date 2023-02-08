@@ -88,9 +88,9 @@ function playRound(playerSelection) {
     }
 
     answerDiv.appendChild(content);
+    answerDiv.appendChild(document.createElement("br"));
     answerDiv.appendChild(document.createTextNode(`Player Score: ${playerScore}, Computer Score: ${computerScore}`));
-    
-    
+
 }
 
 
@@ -98,6 +98,6 @@ const btns = document.querySelectorAll("button");
 btns.forEach(btn => btn.addEventListener('click', (e) => {
     let flushDiv = document.getElementById('results');
     flushDiv.textContent = "";
-    playRound(e.target.textContent);
+    playRound(e.target.name);
 }));
 

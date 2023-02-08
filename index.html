@@ -6,23 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock x Paper x Scissors</title>
     <link rel="stylesheet" href="rps.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
     <script src="./RockPaperScissors.js" defer></script>
 </head>
 <body>
+    <h1 id="gameTitle">ROCK, PAPER AND SCISSORS</h1>
     <div id="console">
-        <p>ROCK, PAPER AND SCISSORS</p>
-
         <p id="currentMessage">Choose your weapon...</p>
         
         <div id="options">
-            <button id="rockbtn">Rock</button>
-            <button id="paperbtn">Paper</button>
-            <button id="scizzorsbtn">Scissors</button>
+            <button class="myBtn"><img class="imgBtn" src="icons/stone.png" alt="Rock Icon" name="Rock"></button>
+            <button class="myBtn"><img class="imgBtn" src="icons/paper.png" alt="Paper Icon" name="Paper"></button>
+            <button class="myBtn"><img class="imgBtn" src="icons/scissors.png" alt="Scissors Icon" name="Scissors"></button>
         </div>
 
         <div id="results">
             
         </div>
+
+        <!--<a href="https://www.flaticon.com/free-icons/stone" title="stone icons">Stone icons created by Icongeek26 - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/paper" title="paper icons">Paper icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/scissors" title="scissors icons">Scissors icons created by Freepik - Flaticon</a>-->
     </div>
 </body>
 </html>

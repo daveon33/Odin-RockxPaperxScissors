@@ -4,11 +4,48 @@ html, body{
 
 body, #console {
     height:100vh;
+    font-family: 'Caveat', cursive;
+    background-color: #273746;
+    color: #ECF0F1;
 }
 
 #console {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-top: 120px;
 }
+
+#gameTitle {
+    font-size: 100px;
+    text-align: center;
+    text-shadow: 0 0 10px #000000, 0 0 10px #000000;
+    margin: 0;
+    padding-top: 100px;
+}
+
+.myBtn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.imgBtn {
+    background-color: transparent;
+    width: 80px;
+    height: 80px;
+}
+
+#currentMessage {
+    font-size: 50px;
+}
+
+#results {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+
